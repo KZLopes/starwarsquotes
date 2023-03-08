@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const dotenv = require('dotenv').config();
 const client = require('mongodb').MongoClient;
-const uri = 'mongodb+srv://KZLopes:156987@cluster0.p9xtkfo.mongodb.net/?retryWrites=true&w=majority'
+const uri = `mongodb+srv://${process.env.dbUser}:${process.env.dbPassword}@cluster0.p9xtkfo.mongodb.net/?retryWrites=true&w=majority`
 
 client.connect(uri, { useUnifiedTopology: true })
   .then(client => {
